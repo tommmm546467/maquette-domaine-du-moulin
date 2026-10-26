@@ -1,21 +1,26 @@
 /* Domaine du Moulin : site de démonstration OBT Agency, octobre 2026 */
 :root{
-  --fond:#fbf9f5;
-  --creme:#f4efe7;
-  --pierre:#e6ddd0;
-  --glacier:#edf1ea;
-  --rose:#f8efec;
-  --encre:#2a2827;
-  --doux:#645f59;
-  --lac:#7c2d3b;
-  --lac-fonce:#5e1f2b;
-  --lac-pale:#f4e4e4;
-  --soleil:#c4973a;
-  --blanc:#fff;
-  --trait:rgba(42,40,39,.12);
-  --r:12px;
-  --titre:"Newsreader",Georgia,serif;
-  --texte:"Manrope",system-ui,sans-serif;
+  --fond:#F5EEE3;
+  --creme:#EADFCF;
+  --pierre:#E0D2BE;
+  --glacier:#E8E7DB;
+  --rose:#F1E3DD;
+  --encre:#2B1A1E;
+  --doux:#5A4A4D;
+  --lac:#6E2735;
+  --lac-fonce:#4A1A24;
+  --lac-pale:#F1E1DF;
+  --soleil:#D9A15B;
+  --soleil-vif:#E6B676;
+  --nuit:#2B141A;
+  --blanc:#FFFBF6;
+  --trait:rgba(74,26,36,.12);
+  --r:22px;
+  --r-petit:14px;
+  --ombre:0 18px 50px rgba(43,20,26,.14);
+  --ombre-douce:0 8px 24px rgba(43,20,26,.08);
+  --titre:"EB Garamond","Times New Roman",serif;
+  --texte:"Instrument Sans",system-ui,sans-serif;
   --large:1240px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,12 +30,14 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .conteneur{width:min(var(--large),100% - 48px);margin-inline:auto}
-h1,h2,h3{font-family:var(--titre);font-weight:600;line-height:1.1;letter-spacing:-.015em;font-variation-settings:"opsz" 72}
-h2{font-size:clamp(2rem,3.6vw,3.05rem)}
-h3{font-size:1.4rem}
-em.it{font-style:italic;font-weight:500;color:var(--lac)}
-.surtitre{display:inline-flex;align-items:center;gap:9px;font-size:.76rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--lac);margin-bottom:14px}
-.surtitre svg{width:18px;height:18px;flex:none;color:var(--soleil)}
+h1,h2,h3{font-family:var(--titre);font-weight:400;line-height:1.08;letter-spacing:-.01em;color:inherit}
+h2{font-size:clamp(34px,4.4vw,60px)}
+h3{font-size:clamp(24px,2.3vw,30px);font-weight:500}
+em.it{font-style:italic;font-weight:400;color:var(--lac)}
+.surtitre{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--texte);letter-spacing:.16em;text-transform:uppercase;color:var(--lac);margin-bottom:18px}
+.surtitre::before{content:"";width:28px;height:1.5px;background:currentColor}
+.surtitre svg{display:none}
+.entete-section.centre .surtitre::after{content:"";width:28px;height:1.5px;background:currentColor}
 .section{padding:clamp(72px,9vw,120px) 0}
 .section.creme{background:var(--creme)}
 .section.glacier,.section.sauge{background:var(--glacier)}
@@ -490,3 +497,229 @@ form.formulaire{background:#fff;border-radius:18px;padding:clamp(24px,3.5vw,40px
 @media (max-width:900px){.espaces{grid-template-columns:1fr}.espace{min-height:340px}}
 @media (max-width:600px){.logo .nom small{display:none}.logo .nom{font-size:1rem}}
 .insecable{white-space:nowrap}
+
+/* ==== V2 du 26/10/2026 : le système visuel du Domaine des Chabriers (demande de Tom) ==== */
+/* Boutons : miel sur lie-de-vin, comme l'abricot des Chabriers */
+.btn{padding:15px 28px;font:600 15px/1 var(--texte)}
+.btn-plein{background:var(--soleil);color:var(--nuit);box-shadow:none}
+.btn-plein:hover{background:var(--soleil-vif);color:var(--nuit);transform:translateY(-2px);box-shadow:0 10px 24px rgba(217,161,91,.35)}
+.btn-contour{border-color:var(--lac);color:var(--lac)}
+.btn-contour:hover{background:var(--lac);color:#fff;border-color:var(--lac)}
+.btn-blanc{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn-blanc:hover{background:#fff;color:var(--nuit)}
+.lien-fleche{color:var(--lac)}
+.entete.plein,.entete.toujours-plein{background:rgba(245,238,227,.94);box-shadow:0 1px 0 var(--trait)}
+.menu{gap:26px}
+.menu a,.menu .ouvrir{font-size:15px}
+.menu a::after,.menu .ouvrir::after{background:var(--soleil)}
+.sous-menu{border-radius:16px}
+.sous-menu a:hover{background:var(--fond)}
+.mosaique button,.duo-photos img,.photos-gite img,.activite,.carte-gite,.compris .bloc,.piece,.avis,.encart,.tarifs,.etapes-resa li,.coordonnees a,.acces li{border-radius:var(--r)}
+.compris .bloc,.piece,.avis,.etapes-resa li,.coordonnees a,.acces li{border-color:transparent;box-shadow:var(--ombre-douce);background:var(--blanc)}
+.chiffres{background:var(--blanc)}
+.chiffres strong{font-weight:500}
+.etoiles{color:var(--soleil)}
+
+/* Hero : la note sans bulle, le dégradé des Chabriers, la place pour la bande d'atouts */
+.hero::after{background:linear-gradient(180deg,rgba(43,20,26,.55) 0%,rgba(43,20,26,.22) 28%,rgba(43,20,26,.34) 55%,rgba(43,20,26,.84) 100%)}
+.hero h1{font-size:clamp(44px,6.2vw,88px);max-width:19ch;font-weight:400;line-height:1.02}
+.hero h1 em{color:#F6D9B8;font-weight:400}
+.hero .contenu.avec-bande{padding-bottom:clamp(150px,20vh,200px)}
+.note-heros{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;text-shadow:0 1px 3px rgba(0,0,0,.5),0 1px 16px rgba(0,0,0,.55)}
+.note-heros .etoiles{letter-spacing:3px}
+
+/* Bande d'atouts à cheval sur le hero */
+.bande-mots{position:relative;z-index:3;margin-top:-64px}
+.bande-mots ul{width:min(var(--large),100% - 48px);margin:0 auto;list-style:none;background:var(--blanc);border-radius:var(--r);box-shadow:var(--ombre);display:grid;grid-template-columns:repeat(4,1fr)}
+.bande-mots li{display:flex;align-items:center;gap:16px;padding:28px 26px;position:relative;transition:background .3s}
+.bande-mots li+li::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:var(--creme)}
+.bande-mots li:hover{background:var(--fond)}
+.bande-mots li:first-child{border-radius:var(--r) 0 0 var(--r)}
+.bande-mots li:last-child{border-radius:0 var(--r) var(--r) 0}
+.bande-mots .icone{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(217,161,91,.18);color:var(--lac);transition:background .3s,transform .4s}
+.bande-mots li:hover .icone{background:var(--soleil);transform:rotate(-8deg)}
+.bande-mots .icone svg{width:28px;height:28px;stroke-width:1.4}
+.bande-mots strong{display:block;font:500 23px/1.1 var(--titre);color:var(--encre)}
+.bande-mots li span:last-child{font-size:14px;line-height:1.35;color:var(--doux)}
+
+/* Trois portes en accordéon */
+.portes{display:flex;gap:14px;height:min(78vh,680px)}
+.porte{position:relative;flex:1;border-radius:var(--r);overflow:hidden;color:#fff;isolation:isolate;transition:flex .7s cubic-bezier(.2,.8,.2,1);min-width:0}
+.porte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s}
+.porte::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,20,26,.12),rgba(43,20,26,.86))}
+.porte .num{position:absolute;top:24px;left:26px;font:500 italic 22px/1 var(--titre);color:var(--soleil-vif)}
+.porte .verbe{position:absolute;top:24px;right:26px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.porte .bas{position:absolute;left:26px;right:26px;bottom:26px}
+.porte h3{color:#fff;font-size:clamp(30px,3vw,46px);margin:0 0 10px;font-weight:400}
+.porte .infos{font-size:14px;opacity:.9;margin-bottom:6px}
+.porte p,.porte .btn{max-height:0;opacity:0;overflow:hidden;margin:0;transition:max-height .6s,opacity .4s,margin .4s}
+.porte .btn{padding-block:0;border-width:0}
+.portes:hover .porte{flex:.8}
+.portes .porte:hover,.portes .porte:focus-visible{flex:2.3}
+.porte:hover img{transform:scale(1.05)}
+.porte:hover p,.porte:focus-visible p{max-height:140px;opacity:1;margin-bottom:18px}
+.porte:hover .btn,.porte:focus-visible .btn{max-height:60px;opacity:1;padding-block:14px}
+.sous-portes{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:22px;color:var(--doux);font-size:15px}
+
+/* Split texte + collage en quinconce */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,96px);align-items:center}
+.chapeau{font-size:clamp(18px,1.6vw,21px);max-width:640px;color:var(--doux)}
+.liste-spas{list-style:none;margin:34px 0 0;position:relative}
+.liste-spas::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(var(--soleil),var(--lac))}
+.liste-spas li{position:relative;padding:0 0 24px 44px}
+.liste-spas li::before{content:"";position:absolute;left:3px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--soleil);box-shadow:0 0 0 6px rgba(217,161,91,.22)}
+.liste-spas .nom{display:block;font:500 italic 24px/1.1 var(--titre);color:var(--lac);margin-bottom:4px}
+.liste-spas p{color:var(--doux)}
+.liste-spas strong{color:var(--encre);font-weight:600}
+.collage{display:block}
+.photo-cadre{border-radius:var(--r);overflow:hidden;background:var(--creme)}
+.photo-cadre img{width:100%;height:100%;object-fit:cover}
+.superposees{position:relative;aspect-ratio:5/6}
+.superposees .grande{position:absolute;inset:0 0 12% 16%}
+.superposees .petite{position:absolute;left:0;bottom:0;width:46%;aspect-ratio:3/4;border:8px solid var(--creme);box-shadow:var(--ombre)}
+.quinconce{position:relative;aspect-ratio:1/1}
+.quinconce .photo-cadre{position:absolute;width:46%;aspect-ratio:3/4;border:8px solid var(--creme);box-shadow:var(--ombre)}
+.quinconce .photo-cadre:nth-child(1){right:0;top:-28%}
+.quinconce .photo-cadre:nth-child(2){left:0;top:5%}
+.quinconce .photo-cadre:nth-child(3){right:0;top:38%}
+
+/* La mini-ferme en un coup d'œil : photo carrée et quatre blocs */
+.plan-haut{display:grid;grid-template-columns:1fr minmax(0,400px);gap:clamp(30px,5vw,70px);align-items:center}
+.plan-photo{border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre);aspect-ratio:1/1}
+.plan-photo img{width:100%;height:100%;object-fit:cover}
+.blocs{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(30px,4vw,50px)}
+.bloc{display:flex;flex-direction:column;height:100%;background:var(--blanc);border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre-douce);position:relative;transition:transform .3s,box-shadow .3s}
+.bloc img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.bloc .pastille{position:absolute;top:14px;left:14px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--soleil);color:var(--nuit);box-shadow:0 6px 18px rgba(43,20,26,.25)}
+.bloc .pastille svg{width:24px;height:24px}
+.bloc .texte{display:flex;flex-direction:column;gap:6px;padding:18px 20px 22px;flex:1}
+.bloc .texte strong{font:500 26px/1.1 var(--titre);color:var(--encre)}
+.bloc .texte small{font-size:15px;line-height:1.5;color:var(--doux)}
+.bloc:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
+.pastilles-claires{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:26px;align-items:center}
+.pastilles-claires li{padding:9px 16px;border-radius:999px;background:var(--blanc);border:1px solid var(--creme);color:var(--lac);font-size:14px}
+
+/* La carte cadeau : un encart à part, ni caché ni en premier */
+.cadeau{display:grid;grid-template-columns:1fr 1.25fr;border-radius:var(--r);overflow:hidden;background:var(--blanc);box-shadow:var(--ombre)}
+.cadeau .photo{position:relative;min-height:440px}
+.cadeau .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cadeau .ruban{position:absolute;top:22px;left:22px;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:var(--soleil);color:var(--nuit);font:600 13px/1 var(--texte);letter-spacing:.08em;text-transform:uppercase}
+.cadeau .ruban svg{width:18px;height:18px}
+.cadeau .texte{padding:clamp(28px,4vw,54px);align-self:center}
+.cadeau .texte h2{margin-bottom:.35em}
+.offres{list-style:none;margin:22px 0 26px;display:grid;gap:4px}
+.offres li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid var(--creme)}
+.offres li span{color:var(--doux);font-size:15px}
+.offres li span strong{display:block;color:var(--encre);font:500 22px/1.2 var(--titre)}
+.offres li b{font:500 26px/1 var(--titre);color:var(--lac);white-space:nowrap}
+.cadeau .boutons{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Vos hôtes : vidéo verticale et citations */
+.section.compacte{padding:clamp(48px,6vw,80px) 0}
+.hotes{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:clamp(26px,4vw,64px);align-items:center}
+.video-verticale{border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre);aspect-ratio:9/16;background:var(--nuit)}
+.video-verticale video{display:block;width:100%;height:100%;object-fit:cover}
+.citations{list-style:none;margin-top:24px;display:grid;gap:22px}
+.citations li{padding-left:24px;border-left:2px solid var(--soleil)}
+.citations .etoiles{display:block;font-size:14px;letter-spacing:3px;margin-bottom:4px}
+.citations q{font:500 italic 24px/1.3 var(--titre);color:var(--encre);quotes:"« " " »"}
+.citations cite{display:block;font-style:normal;font-size:14px;margin-top:6px;color:var(--lac)}
+
+/* Mosaïque longue : dix photos, légende au survol */
+.mosaique.longue{grid-auto-rows:220px}
+.mosaique.longue button:nth-child(1){grid-column:span 2;grid-row:span 2}
+.mosaique.longue button:nth-child(6),.mosaique.longue button:nth-child(7),.mosaique.longue button:nth-child(10){grid-column:span 2}
+.mosaique button span{left:0;right:0;bottom:0;border-radius:0;padding:40px 20px 16px;background:linear-gradient(transparent,rgba(43,20,26,.78));color:#fff;font:500 italic 22px/1 var(--titre);opacity:1;transform:translateY(100%)}
+.mosaique button:hover span{transform:none}
+
+/* Avis : notes en pastilles et cartes qui défilent */
+.notes{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:44px}
+.note{display:flex;align-items:center;gap:14px;padding:14px 22px;border-radius:999px;background:var(--blanc);box-shadow:var(--ombre-douce)}
+.note .chiffre{font:600 30px/1 var(--titre);color:var(--lac)}
+.note .detail{font-size:13px;line-height:1.3;color:var(--doux)}
+.note .detail strong{display:block;font-size:14px;color:var(--encre)}
+.defile{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.defile .piste{display:flex;gap:22px;width:max-content;animation:defile 80s linear infinite;padding:10px 0 20px}
+.defile:hover .piste{animation-play-state:paused}
+.carte-avis{width:360px;flex:none;background:var(--blanc);border-radius:var(--r);padding:28px;box-shadow:var(--ombre-douce);display:flex;flex-direction:column;gap:14px}
+.carte-avis .etoiles{font-size:16px;letter-spacing:3px}
+.carte-avis blockquote{font:500 italic 21px/1.35 var(--titre);color:var(--encre)}
+.carte-avis footer{margin-top:auto;font-size:14px;display:flex;justify-content:space-between;gap:10px;color:var(--doux)}
+.carte-avis footer strong{color:var(--lac)}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+/* Bandeau final centré */
+.bandeau-final{position:relative;min-height:78vh;display:grid;align-items:center;color:#fff;isolation:isolate;overflow:hidden}
+.bandeau-final>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.bandeau-final::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at center,rgba(43,20,26,.76) 0%,rgba(43,20,26,.5) 60%,rgba(43,20,26,.42) 100%)}
+.bandeau-final .contenu{width:min(860px,100% - 32px);margin-inline:auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+.bandeau-final h2{color:#fff;font-size:clamp(54px,8vw,120px);line-height:.95;margin-bottom:22px;text-shadow:0 2px 30px rgba(43,20,26,.45)}
+.bandeau-final h2 em{color:#F6D9B8;font-style:italic}
+.bandeau-final p{font-size:clamp(17px,1.6vw,20px);max-width:560px;margin-bottom:30px;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+
+/* Pied de page sombre, comme aux Chabriers */
+.pied{background:var(--nuit);color:#DCCBCD;border-top:0;padding:90px 0 30px}
+.pied h4{color:var(--soleil);font:600 13px/1 var(--texte);letter-spacing:.14em}
+.pied ul,.pied p{color:#DCCBCD}
+.pied ul a:hover{color:var(--soleil-vif)}
+.pied .logo-pied span{color:#fff}
+.pied .logo-pied small{color:#BFA9AD}
+.pied .accroche{font:500 italic 24px/1.25 var(--titre);color:#fff;margin-top:18px;max-width:320px}
+.pied .tel-pied{color:#fff;font-weight:500}
+.pied .bas{border-top-color:rgba(255,255,255,.1);color:#A9949A}
+
+/* Page des cartes cadeaux */
+.trois-cadeaux{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trois-cadeaux article{background:var(--blanc);border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre-douce);display:flex;flex-direction:column}
+.trois-cadeaux img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.trois-cadeaux .corps{padding:24px 26px 28px;display:flex;flex-direction:column;gap:8px;flex:1}
+.trois-cadeaux .prix{font:500 34px/1 var(--titre);color:var(--lac)}
+.trois-cadeaux .prix small{font:400 15px/1 var(--texte);color:var(--doux)}
+.trois-cadeaux p{color:var(--doux);font-size:15px}
+.formats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.formats div{background:var(--blanc);border-radius:var(--r);padding:26px;box-shadow:var(--ombre-douce)}
+.formats svg{width:32px;height:32px;color:var(--lac);margin-bottom:12px}
+.formats strong{display:block;font:500 24px/1.15 var(--titre);color:var(--encre);margin-bottom:6px}
+.formats p{color:var(--doux);font-size:15px}
+
+@media (prefers-reduced-motion:reduce){.defile .piste{animation:none}}
+@media (max-width:1100px){
+  .bande-mots ul{grid-template-columns:1fr 1fr}
+  .bande-mots li:nth-child(3)::before{display:none}
+  .bande-mots li:nth-child(-n+2){border-bottom:1px solid var(--creme)}
+  .bande-mots li{border-radius:0!important}
+  .blocs{grid-template-columns:repeat(2,1fr)}
+  .formats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .split,.plan-haut,.hotes,.cadeau{grid-template-columns:1fr}
+  .portes{flex-direction:column;height:auto}
+  .porte{min-height:320px;flex:none!important}
+  .porte p{max-height:none;opacity:1;margin-bottom:16px}
+  .porte .btn{max-height:none;opacity:1;padding-block:13px;border-width:1.5px}
+  .hotes .video-verticale{max-width:300px;margin-inline:auto}
+  .cadeau .photo{min-height:300px}
+  .trois-cadeaux{grid-template-columns:1fr}
+  .mosaique.longue{grid-auto-rows:170px}
+  .mosaique.longue button:nth-child(n){grid-column:auto;grid-row:auto}
+  .mosaique.longue button:nth-child(1),.mosaique.longue button:nth-child(10){grid-column:span 2}
+  .mosaique button span{transform:none;font-size:18px;padding:30px 14px 10px}
+  .quinconce{margin-top:30%}
+}
+@media (max-width:600px){
+  .bande-mots{margin-top:-44px}
+  .bande-mots ul{width:calc(100% - 32px)}
+  .bande-mots li{flex-direction:column;text-align:center;gap:10px;padding:20px 12px}
+  .bande-mots .icone{width:48px;height:48px}
+  .bande-mots strong{font-size:20px}
+  .bande-mots li span:last-child{font-size:13px}
+  .blocs,.formats{grid-template-columns:1fr}
+  .bloc{flex-direction:row}
+  .bloc img{width:38%;aspect-ratio:auto}
+  .bloc .pastille{width:36px;height:36px;top:10px;left:10px}
+  .bloc .texte strong{font-size:22px}
+  .carte-avis{width:290px;padding:22px}
+  .carte-avis blockquote{font-size:19px}
+  .quinconce .photo-cadre{border-width:5px}
+  .offres li b{font-size:22px}
+}
